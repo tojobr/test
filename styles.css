@@ -1,0 +1,382 @@
+
+*, *:before, *:after {
+	box-sizing: border-box;
+	text-indent: 0;
+}
+@font-face {
+	font-family: "Cabin";
+  src: url('/fonts/Cabin-Regular.ttf');
+}
+html {
+	font-family: 'Cabin', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	height: 100%;	
+}
+body {
+	margin: 0;
+	font-weight: 400;
+	font-family: 'Cabin', sans-serif;
+	font-size: medium;	
+	overflow-y: scroll;
+}
+h2, h3 {
+	color: rgba(0, 0, 0, 0.870588);
+	font-weight: 400;
+	margin: 0;
+	margin-top: 10px;
+	margin-bottom: 14px;
+	font-size: 1.3em;
+}
+h3 {
+	margin-top: 8px;
+	margin-bottom: 8px;
+	font-size: 1.2em;
+}
+input:-webkit-autofill { /* removes the ugly yellow bg when autofilled */
+	box-shadow: 0 0 0 1000px white inset;
+}
+input[type=submit] {
+	visibility: hidden;
+	position: absolute;
+	z-index: -1;	
+}
+
+.react-layout-components--box {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+.highlightChip {
+	color: #0288D1; /* lightblue 700 */
+	font-weight: 500;
+}
+
+/*-------------------------------------------------------------------*/
+/*---------------------------- rc-slider ----------------------------*/
+/*-------------------------------------------------------------------*/
+/* "html" to make the selector deeper */
+html .rc-slider-disabled {
+	background-color: transparent;
+}
+html .rc-slider-disabled .rc-slider-track {
+	background-color: #a0a0a0;
+}
+html .rc-slider-disabled .rc-slider-handle {
+	border-color: #a0a0a0;
+}
+html .rc-slider-disabled .rc-slider-dot {
+	border-color: transparent;
+	background-color: transparent;
+}
+
+/*-------------------------------------------------------------------*/
+/*----------------------------- Progress ----------------------------*/
+/*-------------------------------------------------------------------*/
+#cpCorner {
+	width: 150px; height: 100px;
+	flex-shrink: 0;
+}
+.cpChildrenTitleRowContainer { /* for IScroll to get a width/height */
+	height: 100px;
+}
+.cpChildrenTitleRow { /* we can't use ellipsis because of the rotation */
+	position: relative;
+	height: 100px;
+	overflow: hidden;
+	flex-shrink: 0;
+	touch-action: none; /* for iScroll */
+}
+.cpLessonsTitleColumn {
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	width: 150px;
+	overflow: hidden;
+	touch-action: none; /* for iScroll */
+}
+.cpCells {
+	position: relative;
+	flex: 1;
+	touch-action: none; /* for iScroll */
+}
+.cpCells .pinMode {
+	background-color: #FFF9C4; /* yellow 100 */
+	cursor: pointer;
+}
+.cpCells .editMode {
+	background-color: #BBDEFB; /* blue 100 */
+	cursor: pointer;
+}
+.withEditStatus {
+	background: repeating-linear-gradient(
+		45deg,
+		transparent,
+		transparent 2px,
+		rgba(0, 0, 0, 0.1) 2px,
+		rgba(0, 0, 0, 0.1) 4px
+	)
+}
+.progressStatusLetter {
+	/* text centering */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 700;
+	z-index: 1; /* for the withPin */
+}
+.progressStatusLetter.withPin::before {
+	content: " ";
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	background-color: white;
+	opacity: 0.5;
+	z-index: -1;
+}
+.progressRow {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 24px;
+}
+.progressRowGroup {
+	cursor: pointer;
+	position: relative; /* for an absolute child */
+}
+.progressLevel1 {
+	background-color: #eeeeee;
+}
+.progressLevel2 {
+	background-color: #f8f8f8;
+}
+.progressColumn {
+	position: absolute;
+	bottom: 0;
+	transform: translateY(15px) rotate(-90deg);
+	transform-origin: left top;
+	cursor: pointer;
+	white-space: nowrap;
+}
+.progressStatusBars {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	height: 100%;
+	position: relative;
+}
+.mColor { color: #388E3C; } /* green 700 */
+.pColor { color: #0288D1; } /* lightblue 700 */
+.nColor { color: #F57C00; } /* orange 700 */
+.mBgColor { background-color: #388E3C; } /* green 700 */
+.pBgColor { background-color: #0288D1; } /* lightblue 700 */
+.nBgColor { background-color: #F57C00; } /* orange 700 */
+.mColorOnDark { color: #C8E6C9; } /* green 100 */
+.pColorOnDark { color: #B3E5FC; } /* lightblue 100 */
+.nColorOnDark { color: #FFE0B2; } /* orange 100 */
+.progressStatusBarsOverlay {
+	position: absolute;
+	top: 10%; left: 10%;
+	width: 80%; height: 80%;
+	background-color: white;
+	border-radius: 50%;
+	opacity: 0.7;
+}
+.editSlideChildren {
+	max-height: 200px;
+}
+
+/*-------------------------------------------------------------------*/
+/*------------------- Reports and ReportDesigner --------------------*/
+/*-------------------------------------------------------------------*/
+.rdToolBarAndBlocks { margin: 8px 0; }
+/* the toolbar's paper */
+.rdToolBarAndBlocks >div:first-child { margin-right: 10px; }
+
+/*---- toolBar ----*/
+.rdToolBar {
+	width: 200px;
+}
+.rdTrashCan {
+	height: 50px;
+	padding: 0 5px;
+	will-change: opacity;
+	opacity: 0;
+}
+.rdToolBarItem {
+	cursor: pointer;
+	border: 1px solid darkgrey;
+	padding: 6px;
+	border-radius: 4px;
+	margin: 4px;
+}
+/* trashCan and animations */
+.rdTrashCan div[draggable="true"] { display: none; }
+.rdTrashCan .rdToolBarItem { height: 50px; }
+.rdToolBarDelete {
+	height: 50px;
+	border-radius: 2px;
+}
+.rdToolBarDelete.hover { background-color: #e0e0e0; } /* :hover pseudo-class won't work when dragging (same with onmouseover/exit */
+.rdToolBarItems {
+	will-change: transform;
+	transform: translateY(-50px);
+}
+.rdToolBar.deleteVisible .rdTrashCan { opacity: 1; }
+.rdToolBar.deleteVisible .rdToolBarItems { transform: translateY(0); }
+
+.rdReportBlocks { position: relative; }
+.rdReportBlocks .rdEditor { /* deeper selector than .rdReportBlocs >div (for the height) */
+	flex: 0;
+	flex-shrink: 0;
+}
+.rdEditorContainer {
+	margin-top: 10px;
+}
+.rdFocused {
+	background-color: #FFF9C4; /* yellow 100, same as pinMode */
+}
+
+.repTitle {
+	font-family: "Roboto Slab";
+}
+/* for titles, line-height is font-size * 1.6 */
+.repTitle.level1 {
+	font-weight: 300;
+	font-size: 40px;
+	line-height: 64px;
+}
+.repTitle.level2 {
+	font-size: 30px;
+	line-height: 48px;
+}
+.repTitle.level3 {
+	font-size: 25px;
+	line-height: 40px;
+	font-style: italic;
+}
+/* for lessons, line-height is font-size * 1.5 */
+.repLessons .level1 {
+	font-size: 30px;
+	line-height: 45px;
+}
+.repLessons .level2 {
+	font-weight: 300;
+	font-size: 23px;
+	line-height: 34px;
+	text-indent: 10px;
+}
+.repLessons .level3 {
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 30px;
+	text-indent: 20px;
+}
+.repLesson {
+	font-size: 18px;
+	line-height: 27px;
+}
+
+/*-------------------------------------------------------------------*/
+/*----------------------------- Reusable ----------------------------*/
+/*-------------------------------------------------------------------*/
+/*----- Flex -------*/
+.flexRow {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	flex-wrap: nowrap;
+}
+.flexColumn {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	flex-wrap: nowrap;
+}
+.flexCenter {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+}
+.stretch      { align-items: stretch; }
+.center       { align-items: center; }
+.flexEnd      { align-items: flex-end; }
+.spaceBetween { justify-content: space-between; }
+.stretchSelf  { align-self: stretch; }
+.flexEndSelf  { align-self: flex-end; }
+.flex1        { flex: 1; }
+.wrap         { flex-wrap: wrap; }
+.shrink0      { flex-shrink: 0 }
+.shrink1      { flex-shrink: 1 }
+/*------------------*/
+
+.errorColor {
+	color: red;
+}
+.ellipsis {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.gridBorder {
+	border-right: 1px solid #e2e2e2;
+	border-bottom: 1px solid #e2e2e2;
+}
+.width100       { width: 100%; }
+.height100      { height: 100%; }
+.pointer        { cursor: pointer; }
+.overflowHidden { overflow: hidden; }
+.overflowAuto   { overflow: auto; }
+.positionRelative { position: relative; }
+.overParent {
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+}
+.floatLeft {
+	float: left;
+}
+.hidden { opacity: 0; }
+.visible { opacity: 1; }
+.transition300ms { transition: all 300ms ease-in-out }
+.marginRight8  { margin-right: 8px; }
+.marginRight16 { margin-right: 16px; }
+.marginRight24 { margin-right: 24px; }
+.pointer { cursor: pointer; }
+
+/*-------------------------------------------------------------------*/
+/*-------------------------- colors styles --------------------------*/
+/*-------------------------------------------------------------------*/
+/*-- green --*/
+.greenSeazon, .greenSeazon:hover {
+	color: #1fa086;
+}
+.bgGreenSeazon {
+	background-color: #1fa086;
+}
+/*-- orange --*/
+.redSeazon{
+	color: #fd6664;
+}
+/*-- grey --*/
+.greySeazon{
+	color: #4a4a4a;
+}
+.bgGreySeazon {
+	background-color: #f2f2f2; 
+}
+.greyBorder { border: 1px solid #d8d8d8; }
+
+.block {
+	border: 1px solid #d8d8d8;
+	background-color: white;
+}
+
+.react-datepicker-ignore-onclickoutside {
+	text-align: center !important;
+}
